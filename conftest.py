@@ -15,5 +15,7 @@ def browser(request):
     # turn off notifications DevTools
     tuning.add_experimental_option('excludeSwitches', ['enable-logging'])
     browser = webdriver.Chrome(options = tuning)
+    browser.implicitly_wait(4)
+    browser.maximize_window()
     yield browser
     browser.quit()
