@@ -3,8 +3,8 @@ from .locators import LoginPageLocators
 
 class LoginPage(BasePage):
 
-    def should_be_login_url(self):
-        assert 'login' in self.browser.current_url, 'Login URL is NOT PRESENTED'
+    def should_be_login_page(self):
+        assert 'login' in self.browser.current_url, 'Login page is NOT PRESENTED'
 
     def should_be_login_form(self):
         assert self.is_element_present(*LoginPageLocators.LOGIN_FORM), 'Login form is NOT PRESENTED'

@@ -5,10 +5,10 @@ from pages.login_page import LoginPage
 
 link = 'http://selenium1py.pythonanywhere.com/accounts/login'
 
-def test_guest_should_see_login_url(browser):
+def test_guest_should_see_login_page(browser):
     page = LoginPage(browser, link)
     page.open()
-    page.should_be_login_url()
+    page.should_be_login_page()
 
 def test_guest_should_see_login_form(browser):
     page = LoginPage(browser, link)
