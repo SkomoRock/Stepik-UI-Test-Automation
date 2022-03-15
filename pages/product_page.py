@@ -9,7 +9,7 @@ class ProductPage(BasePage):
         try:
             button = self.browser.find_element(*ProductPageLocators.BUTTON_ADD)
             button.click()
-        except: assert False, 'Button add to basket is NOT PRESENTED'
+        except: assert False, 'Button add to basket is NOT FOUND'
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
@@ -24,3 +24,13 @@ class ProductPage(BasePage):
             alert.accept()
         except NoAlertPresentException:
             print('No second alert presented')
+
+    def product_name_checking(self):
+        expected_result = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
+        actual_result = self.browser.find_element(*ProductPageLocators.BASKET_NAME).text
+        assert expected_result == actual_result, 'Product name is INCORRECT'
+
+    def basket_cost_checking(self):
+        expected_result = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+        actual_result = self.browser.find_element(*ProductPageLocators.BASKET_PRICE).text
+        assert expected_result == actual_result, 'Basket cost is INCORRECT'

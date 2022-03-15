@@ -11,7 +11,8 @@ def pytest_addoption(parser):
 def browser(request):
     user_language = request.config.getoption('language')
     tuning = Options()
-    tuning.add_experimental_option('prefs', {'intl.accept_languages': user_language})
+    tuning.add_experimental_option\
+        ('prefs', {'intl.accept_languages': user_language})
     # turn off notifications DevTools
     tuning.add_experimental_option('excludeSwitches', ['enable-logging'])
     browser = webdriver.Chrome(options = tuning)
