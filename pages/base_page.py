@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage():
 
-    def __init__(self, browser, url, timeout = 10):
+    def __init__(self, browser, url, timeout = 4):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -48,3 +48,7 @@ class BasePage():
             link = self.browser.find_element(*BasketPageLocators.BASKET_BUTTON)
             link.click()
         except: assert False, 'Go to basket is FAILED'
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), \
+            "User icon is NOT FOUND, probably UNAUTHORISED user"
