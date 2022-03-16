@@ -1,6 +1,6 @@
 # run command:
 # py -m pytest -v --tb=line --language=en test_main_page.py
-# py -m pytest -v --tb=line --language=en -m login_guest test_main_page.py
+# py -m pytest -v --tb=line --language=en -m login_guest
 
 import pytest
 from pages.main_page import MainPage
@@ -8,9 +8,9 @@ from pages.login_page import LoginPage
 from pages.basket_page import BasketPage
 
 @pytest.mark.login_guest
+# self argument must be present first
 class TestLoginFromMainPage():
 
-    # self argument must be present first
     def test_guest_should_see_login_link(self, browser):
         link = 'http://selenium1py.pythonanywhere.com'
         page = MainPage(browser, link)
