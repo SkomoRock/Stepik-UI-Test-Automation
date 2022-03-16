@@ -4,12 +4,17 @@ class BasePageLocators():
     LOGIN_LINK = (By.ID, 'login_link')
     LOGIN_LINK_INVALID = (By.ID, 'login_link_inc')
 
-class MainPageLocators():
-    LOGIN_LINK = (By.ID, 'login_link')
+class BasketPageLocators():    
+    BASKET_BUTTON = (By.XPATH, '//*[@id="default"]/header/div[1]/div/div[2]/span/a')
+    ORDER_BUTTON = (By.ID, 'btn-block')
+    CONTINUE_SHOPPING = (By.XPATH, '//*[@id="content_inner"]/p/a')
 
 class LoginPageLocators():
     LOGIN_FORM = (By.ID, 'login_form')
     REGISTER_FORM = (By.ID, 'register_form')
+
+class MainPageLocators():
+    LOGIN_LINK = (By.ID, 'login_link')
 
 class ProductPageLocators():
     BUTTON_ADD = (By.CLASS_NAME, 'btn-add-to-basket')

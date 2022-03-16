@@ -1,4 +1,5 @@
 from .locators import BasePageLocators
+from .locators import BasketPageLocators
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
@@ -41,3 +42,9 @@ class BasePage():
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), \
             'Login link is NOT FOUND'
+
+    def go_to_basket(self):
+        try:
+            link = self.browser.find_element(*BasketPageLocators.BASKET_BUTTON)
+            link.click()
+        except: assert False, 'Go to basket is FAILED'
