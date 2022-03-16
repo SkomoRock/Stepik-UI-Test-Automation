@@ -1,3 +1,4 @@
+from .locators import BasePageLocators
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
@@ -8,7 +9,7 @@ class BasePage():
     def __init__(self, browser, url, timeout = 10):
         self.browser = browser
         self.url = url
-        # self.browser.implicitly_wait(timeout)
+        self.browser.implicitly_wait(timeout)
         self.browser.maximize_window()
 
     def open(self):
@@ -18,7 +19,7 @@ class BasePage():
         try: self.browser.find_element(how, what)
         except NoSuchElementException: return False
         return True
-    
+
     def is_not_element_present(self, how, what, timeout = 4):
         try: WebDriverWait(self.browser, timeout).\
             until(EC.presence_of_element_located((how, what)))
@@ -30,3 +31,13 @@ class BasePage():
             until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException: return False
         return True
+
+    def go_to_login_page(self):
+        try:
+            link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+            link.click()
+        except: assert False, 'Go to login page is FAILED'
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), \
+            'Login link is NOT FOUND'
